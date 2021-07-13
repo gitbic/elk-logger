@@ -1,0 +1,11 @@
+===2021-07-13 11:24:29 [main] INFO  r.c.l.e.s.LoggingElkStarterApplication - Starting LoggingElkStarterApplication using Java 1.8.0_172 on DESKTOP-IJKVL1E with PID 1980 (D:\repo\logging-aop-boot-starter\logging-elk-starter\build\classes\java\main started by admin in D:\repo\logging-aop-boot-starter\logging-elk-starter)
+===2021-07-13 11:24:29 [main] INFO  r.c.l.e.s.LoggingElkStarterApplication - No active profile set, falling back to default profiles: default
+===2021-07-13 11:24:30 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8184 (http)
+===2021-07-13 11:24:30 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8184"]
+===2021-07-13 11:24:30 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+===2021-07-13 11:24:30 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.48]
+===2021-07-13 11:24:30 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+===2021-07-13 11:24:30 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 555 ms
+===2021-07-13 11:24:30 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8184"]
+===2021-07-13 11:24:30 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8184 (http) with context path ''
+===2021-07-13 11:24:30 [main] INFO  r.c.l.e.s.LoggingElkStarterApplication - Started LoggingElkStarterApplication in 1.058 seconds (JVM running for 1.838)
