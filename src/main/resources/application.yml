@@ -1,3 +1,5 @@
+#logging.level.org.springframework: DEBUG
+
 #logging:
 #  pattern:
 #    console: "====%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level  %class{36}.%M %L  - %msg%n"
@@ -5,12 +7,17 @@
 #    name: logs/LogELK.log
 #    path: logs/LogELK.log
 
-fpath: logs/fpath.log
 
 logger-elk:
+
+  file-path: logs/for-elk.log
   server: localhost
   port: 8080
-  file-path: logs/for-elk.log
+
 
 server:
   port: 8184
+
+spring:
+  application:
+    name: logging-elk-starter

@@ -27,7 +27,7 @@ public class LoggerAutoConfiguration {
 //        // assume SLF4J is bound to logback in the current environment
 ////        LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
 //
-//        //            File file = new File("src/main/resources/logback.xml");
+//        //            File file = new File("src/main/resources/logback-spring.xml");
 //
 ////        JoranConfigurator configurator = new JoranConfigurator();
 ////        configurator.setContext(context);
@@ -35,7 +35,7 @@ public class LoggerAutoConfiguration {
 //        // configuration. For multi-step configuration, omit calling context.reset().
 ////            context.reset();
 ////        System.out.println("===========");
-////            configurator.doConfigure(new File("src/main/resources/logback.xml"));
+////            configurator.doConfigure(new File("src/main/resources/logback-spring.xml"));
 ////        StatusPrinter.printInCaseOfErrorsOrWarnings(context);
 //
 //        Logger logger = LoggerFactory.getLogger("ELKaLogger");

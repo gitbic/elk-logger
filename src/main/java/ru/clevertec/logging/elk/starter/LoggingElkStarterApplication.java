@@ -9,7 +9,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
 
-
+@Slf4j
 @SpringBootApplication
 @RequiredArgsConstructor
 public class LoggingElkStarterApplication {
@@ -22,6 +22,7 @@ public class LoggingElkStarterApplication {
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void doSomething() {
+		log.warn("=========Hello from LoggingElkStarter to logstash==========");
 		System.out.println("Hello");
 //		log.warn("Hello from logger");
 //		logger.warn("Warn logger");

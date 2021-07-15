@@ -1,0 +1,51 @@
+<configuration>
+    <!--  <property resource="application.yml" />-->
+<!--    <springProperty name="logFile" source="logger-elk.logFilePath" defaultValue="logs/App.log"/>-->
+    <springProperty name="logstashHost" source="logger-elk.logstashHost" defaultValue="192.168.56.101"/>
+    <springProperty name="logstashPort" source="logger-elk.logstashPort" defaultValue="5300"/>
+    <springProperty name="loggingLevel" source="logger-elk.elasticLoggingLevel" defaultValue="INFO"/>
+
+
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>===%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+    </appender>
+
+<!--    <appender name="FILE" class="ch.qos.logback.core.FileAppender">-->
+<!--        <file>${logFile}</file>-->
+<!--        <encoder>-->
+<!--            <pattern>===%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>-->
+<!--            &lt;!&ndash;            "%d{HH:mm:ss.SSS} [%thread] %-5level  %class{36}.%M %L  - %msg%n"&ndash;&gt;-->
+<!--        </encoder>-->
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+<!--            <level>INFO</level>-->
+<!--        </filter>-->
+<!--    </appender>-->
+
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>${logstashHost}:${logstashPort}</destination>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>${loggingLevel}</level>
+        </filter>
+    </appender>
+
+    <logger name="chapters.configuration" level="INFO"/>
+
+    <!-- Strictly speaking, the level attribute is not necessary since -->
+    <!-- the level of the root level is set to DEBUG by default.       -->
+    <root level="ALL">
+        <appender-ref ref="LOGSTASH"/>
+<!--        <appender-ref ref="FILE"/>-->
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+
+</configuration>
