@@ -8,16 +8,14 @@
 #    path: logs/LogELK.log
 
 
-logger-elk:
-
-  file-path: logs/for-elk.log
-  server: localhost
-  port: 8080
-
 
 server:
   port: 8184
 
-spring:
-  application:
-    name: logging-elk-starter
+#logging-elk:
+#  file-path: logs/for-elk.log
+#  server: localhost
+#  port: 8080
+
+
+#logging.level
