@@ -30,6 +30,7 @@ dependencies {
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 
@@ -41,6 +42,9 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+//If you are using an additional-spring-configuration-metadata.json file, the compileJava task should be configured to depend on the processResources task
+compileJava.inputs.files(processResources)
 
 publishing {
 	publications {

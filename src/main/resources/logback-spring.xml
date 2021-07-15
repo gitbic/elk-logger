@@ -6,8 +6,8 @@
 
     <springProperty name="consoleLogPattern" source="logging-api.console.log-pattern" defaultValue="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"/>
     <springProperty name="consoleLogLevel" source="logging-api.console.log-level" defaultValue="INFO"/>
-
-    <springProperty name="logstashHost" source="logging-api.logstash.host" defaultValue="192.168.56.101"/>
+<!--    192.168.56.101-->
+    <springProperty name="logstashHost" source="logging-api.logstash.host" defaultValue="localhost"/>
     <springProperty name="logstashPort" source="logging-api.logstash.port" defaultValue="5300"/>
     <springProperty name="elasticLogLevel" source="logging-api.elastic.log-level" defaultValue="INFO"/>
 
@@ -48,6 +48,5 @@
         <appender-ref ref="FILE"/>
         <appender-ref ref="STDOUT"/>
     </root>
-
 
 </configuration>

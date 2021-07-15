@@ -16,6 +16,24 @@ server:
 #  file-path: logs/for-elk.log
 #  server: localhost
 #  port: 8080
+logging:
+  pattern:
+    console:
+
+logging-api:
+  file:
+    path: logs/myLogs.log
+    log-pattert: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    log-level: INFO
+  console:
+    log-pattern: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    log-level: INFO
+  elastic:
+    log-level: INFO
+  logstash:
+    host: 192.168.56.101
+    port: 5300
 
 
-#logging.level
+
+

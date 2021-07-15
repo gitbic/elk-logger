@@ -1,0 +1,51 @@
+{
+  "properties": [
+    {
+      "name": "logging-api.file.path",
+      "type": "java.lang.String",
+      "description": "Расположение файла логов. Например 'myApp.log'",
+      "defaultValue": "logs/App.log"
+    },
+    {
+      "name": "logging-api.file.log-pattert",
+      "type": "java.lang.String",
+      "description": "Шаблон для вывода логов в файл.",
+      "defaultValue": "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    },
+    {
+      "name": "logging-api.file.log-level",
+      "type": "java.lang.String",
+      "description": "Уровень логирования для вывода логов в файл.",
+      "defaultValue": "INFO"
+    },
+    {
+      "name": "logging-api.console.log-pattern",
+      "type": "java.lang.String",
+      "description": "Шаблон для вывода логов в консоль.",
+      "defaultValue": "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    },
+    {
+      "name": "logging-api.console.log-level",
+      "type": "java.lang.String",
+      "description": "Уровень логирования для вывода логов в консоль.",
+      "defaultValue": "INFO"
+    },
+    {
+      "name": "logging-api.elastic.log-level",
+      "type": "java.lang.String",
+      "description": "Уровень логирования для вывода логов в elasticSearch.",
+      "defaultValue": "INFO"
+    },
+    {
+      "name": "logging-api.logstash.host",
+      "type": "java.lang.String",
+      "description": "host для отправки логов на logstash",
+      "defaultValue": "localhost"
+    },
+    {
+      "name": "logging-api.logstash.port",
+      "type": "java.lang.String",
+      "description": "port для отправки логов на logstash",
+      "defaultValue": "5300"
+    }
+  ] }
