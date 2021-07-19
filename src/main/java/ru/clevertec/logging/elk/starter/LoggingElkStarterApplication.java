@@ -8,25 +8,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
+import java.util.List;
+
 
 @Slf4j
 @SpringBootApplication
 @RequiredArgsConstructor
 public class LoggingElkStarterApplication {
-
-//	private final Logger logger;
-
 	public static void main(String[] args) {
 		SpringApplication.run(LoggingElkStarterApplication.class, args);
 	}
 
-	@EventListener(ApplicationReadyEvent.class)
-	public void doSomething() {
-		log.warn("=========Hello from LoggingElkStarter to logstash==========");
-		System.out.println("Hello");
-//		log.warn("Hello from logger");
-//		logger.warn("Warn logger");
-//		System.out.println("logger name: " + logger.getName());
-	}
+//	@EventListener(ApplicationReadyEvent.class)
+//	public void doSomething() {
+//		log.warn("=========Hello from LoggingElkStarter to logstash==========");
+//	}
 
 }

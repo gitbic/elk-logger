@@ -1,29 +1,8 @@
-#logging.level.org.springframework: DEBUG
-
-#logging:
-#  pattern:
-#    console: "====%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level  %class{36}.%M %L  - %msg%n"
-#  file:
-#    name: logs/LogELK.log
-#    path: logs/LogELK.log
-
-
-
-server:
-  port: 8184
-
-#logging-elk:
-#  file-path: logs/for-elk.log
-#  server: localhost
-#  port: 8080
-logging:
-  pattern:
-    console:
-
+# there's default options, except logstash.host (default: localhost)
 logging-api:
   file:
     path: logs/myLogs.log
-    log-pattert: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    log-pattern: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
     log-level: INFO
   console:
     log-pattern: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
@@ -33,7 +12,3 @@ logging-api:
   logstash:
     host: 192.168.56.101
     port: 5300
-
-
-
-

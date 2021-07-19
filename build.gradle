@@ -1,7 +1,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.5.2'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'java'
+	id 'java-library'
 	id 'maven-publish'
 }
 
@@ -10,9 +10,6 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 configurations {
-//	all {
-//		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-//	}
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
@@ -24,20 +21,13 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-//	implementation 'org.springframework.boot:spring-boot-starter-logging'
-	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml'
-	implementation 'net.logstash.logback:logstash-logback-encoder:6.6'
+	api 'net.logstash.logback:logstash-logback-encoder:6.6'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-
-	compileOnly 'org.modelmapper:modelmapper:2.3.2'
 }
-
-
 
 test {
 	useJUnitPlatform()
