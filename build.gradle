@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.5.2'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java-library'
+//	id 'java-gradle-plugin'
 	id 'maven-publish'
 }
 
@@ -17,11 +18,13 @@ configurations {
 
 repositories {
 	mavenCentral()
+	mavenLocal()
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	api 'net.logstash.logback:logstash-logback-encoder:6.6'
+	api 'uk.org.lidalia:lidalia-slf4j-ext:1.0.0'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
