@@ -1,4 +1,4 @@
-package ru.clevertec.logging.elk.starter.constatns;
+package ru.clevertec.logging.elk.starter.config.constants;
 
 public class Constants {
     public static final String PARENTHESES = "{}";

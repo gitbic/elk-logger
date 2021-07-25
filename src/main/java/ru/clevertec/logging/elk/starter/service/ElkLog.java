@@ -1,10 +1,10 @@
-package ru.clevertec.logging.elk.starter.dto;
+package ru.clevertec.logging.elk.starter.service;
 
 
 import lombok.extern.slf4j.Slf4j;
 import net.logstash.logback.argument.StructuredArgument;
-import ru.clevertec.logging.elk.starter.constatns.Constants;
-import ru.clevertec.logging.elk.starter.constatns.FieldName;
+import ru.clevertec.logging.elk.starter.config.constants.Constants;
+import ru.clevertec.logging.elk.starter.config.constants.ElasticFieldName;
 import uk.org.lidalia.slf4jext.Level;
 import uk.org.lidalia.slf4jext.Logger;
 import uk.org.lidalia.slf4jext.LoggerFactory;
@@ -19,13 +19,17 @@ import static net.logstash.logback.argument.StructuredArguments.keyValue;
 public class ElkLog {
     private final List<StructuredArgument> loggingFields;
 
-    private static final Logger logger = LoggerFactory.getLogger(Constants.LOGGER_NAME);
+    private final Logger logger ;
     private Level level;
 
     public ElkLog(String loggerName) {
         loggingFields = new ArrayList<>();
+        logger = LoggerFactory.getLogger(loggerName);
         level = Level.INFO;
-        addField(FieldName.LOGGER_NAME, loggerName);
+    }
+
+    public static ElkLog builder(String loggerName) {
+        return new ElkLog(loggerName);
     }
 
     public ElkLog setLevel(Level level) {
@@ -33,17 +37,26 @@ public class ElkLog {
         return this;
     }
 
-    public static ElkLog builder(String loggerName) {
-        return new ElkLog(loggerName);
-    }
-
     public ElkLog addField(String fieldName, Object fieldValue) {
         loggingFields.add(keyValue(fieldName, fieldValue));
         return this;
     }
 
+    public ElkLog addLoggerName(String loggerName){
+        addField(ElasticFieldName.LOGGER_NAME, loggerName);
+        return this;
+    }
+
     public ElkLog addMessage(String message) {
-        return addField(FieldName.MESSAGE, message);
+        return addField(ElasticFieldName.MESSAGE, message);
+    }
+
+    public ElkLog addRequest(Object request) {
+        return addField(ElasticFieldName.REQUEST, request);
+    }
+
+    public ElkLog addResponse(Object response) {
+        return addField(ElasticFieldName.RESPONSE, response);
     }
 
     public void print() {
@@ -65,7 +78,6 @@ public class ElkLog {
         logger.log(level, Constants.PARENTHESES, loggingFields);
     }
 
-    // todo request response
     // todo custom fields from yml
     // todo readme
     // todo Mishe
