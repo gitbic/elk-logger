@@ -121,4 +121,5 @@ public class ElkLog {
 
     // todo readme
     // todo Mishe
+    // todo отключать опционально логгеры
 }

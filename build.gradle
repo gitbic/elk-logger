@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'ru.clevertec'
-version = '0.0.1-SNAPSHOT'
+version = '0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 configurations {
@@ -43,8 +43,8 @@ publishing {
 	publications {
 		mavenJava(MavenPublication) {
 			groupId = 'ru.clevertec'
-			artifactId = 'logging-elk-starter'
-			version = '1.0'
+			artifactId = 'elk-logger'
+			version = '0.1'
 
 			from components.java
 
