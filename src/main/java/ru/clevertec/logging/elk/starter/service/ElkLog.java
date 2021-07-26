@@ -2,7 +2,6 @@ package ru.clevertec.logging.elk.starter.service;
 
 
 import lombok.extern.slf4j.Slf4j;
-import net.logstash.logback.argument.StructuredArgument;
 import ru.clevertec.logging.elk.starter.config.constants.Constants;
 import ru.clevertec.logging.elk.starter.config.constants.ElasticFieldName;
 import uk.org.lidalia.slf4jext.Level;
@@ -11,19 +10,20 @@ import uk.org.lidalia.slf4jext.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import static net.logstash.logback.argument.StructuredArguments.keyValue;
 
 @Slf4j
 public class ElkLog {
-    private final List<StructuredArgument> loggingFields;
+    private final Map<String, Object> loggingFieldsMap;
 
-    private final Logger logger ;
+    private final Logger logger;
     private Level level;
 
     public ElkLog(String loggerName) {
-        loggingFields = new ArrayList<>();
+        loggingFieldsMap = new HashMap<>();
         logger = LoggerFactory.getLogger(loggerName);
         level = Level.INFO;
     }
@@ -38,11 +38,11 @@ public class ElkLog {
     }
 
     public ElkLog addField(String fieldName, Object fieldValue) {
-        loggingFields.add(keyValue(fieldName, fieldValue));
+        loggingFieldsMap.put(fieldName, fieldValue);
         return this;
     }
 
-    public ElkLog addLoggerName(String loggerName){
+    public ElkLog addLoggerName(String loggerName) {
         addField(ElasticFieldName.LOGGER_NAME, loggerName);
         return this;
     }
@@ -60,24 +60,34 @@ public class ElkLog {
     }
 
     public void print() {
-        Object[] logFields = loggingFields.toArray();
+        Object[] loggingFields = getLoggingFields();
 
-        String[] parenthesesArray = new String[logFields.length];
+        String[] parenthesesArray = new String[loggingFields.length];
         Arrays.fill(parenthesesArray, Constants.PARENTHESES);
         String parentheses = String.join(Constants.PARENTHESES_DELIMITER, parenthesesArray);
 
-        logger.log(level, parentheses, logFields);
+        logger.log(level, parentheses, loggingFields);
     }
 
 
     public void printToElk() {
-        logger.log(level, Constants.EMPTY_STRING, loggingFields.toArray());
+        logger.log(level, Constants.EMPTY_STRING, getLoggingFields());
     }
 
-    public void printToConsole() {
-        logger.log(level, Constants.PARENTHESES, loggingFields);
+        public void printToConsole() {
+        logger.log(level, Constants.PARENTHESES, Arrays.asList(getLoggingFields()));
     }
 
+    private Object[] getLoggingFields() {
+        return loggingFieldsMap.entrySet()
+                .stream()
+                .map(entry -> keyValue(entry.getKey(), entry.getValue()))
+                .toArray();
+    }
+
+
+
+    // todo loggerName
     // todo custom fields from yml
     // todo readme
     // todo Mishe
