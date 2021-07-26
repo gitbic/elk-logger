@@ -1,10 +1,10 @@
 <configuration>
-
+<!--    #    log-pattern: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %class{36}.%M %L  - %msg%n"-->
     <springProperty name="filePath" source="logging-api.file.path" defaultValue="logs/App.log"/>
-    <springProperty name="fileLogPattern" source="logging-api.file.log-pattern" defaultValue="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"/>
+    <springProperty name="fileLogPattern" source="logging-api.file.log-pattern" defaultValue="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
     <springProperty name="fileLogLevel" source="logging-api.file.log-level" defaultValue="INFO"/>
 
-    <springProperty name="consoleLogPattern" source="logging-api.console.log-pattern" defaultValue="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"/>
+    <springProperty name="consoleLogPattern" source="logging-api.console.log-pattern" defaultValue="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
     <springProperty name="consoleLogLevel" source="logging-api.console.log-level" defaultValue="INFO"/>
 <!--    192.168.56.101-->
     <springProperty name="logstashHost" source="logging-api.logstash.host" defaultValue="localhost"/>
